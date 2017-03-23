@@ -2,4 +2,12 @@
 comment0.params=autor\ nombreGrupo
 comment0.target=EntradaUnionAGrupo(java.lang.String,\ java.lang.String)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ EntradaUnionAGrupo\r\n
-numComments=1
+comment1.params=
+comment1.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=void\ mostrar()
+comment3.params=
+comment3.target=int\ getCantidadDeDatosAsociadosALaEntrada()
+comment4.params=
+comment4.target=void\ mostrarDatosExclusivos()
+numComments=5

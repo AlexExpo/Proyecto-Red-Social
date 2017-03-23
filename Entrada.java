@@ -47,9 +47,35 @@ public class Entrada
         return cantidadMeGusta;
     }
     
+    public void mostrar()
+    {
+        
+    }
+    
     public String toString()
     {
-        return null;
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += "Usuario: " + getUsuario() + "\n";
+        cadenaADevolver += getCantidadMeGusta() + " me gusta:\n";
+        
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        
+        cadenaADevolver += "Hace ";
+        if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
+        }
+        
+        cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundos.\n";
+        
+        return cadenaADevolver + "\n";
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return 3;
     }
     
 }

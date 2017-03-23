@@ -1,4 +1,6 @@
-
+import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 /**
  * Write a description of class EntradaUnionAGrupo here.
  * 
@@ -18,7 +20,31 @@ public class EntradaUnionAGrupo extends Entrada
         // initialise instance variables
         super(autor);
         grupo = nombreGrupo;
-        System.out.println("El usuario: " + getUsuario() + " se ha unido al grupo " + grupo + ".");
+    }
+    
+    public String toString()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.toString();
+        cadenaADevolver += "Se ha unido al grupo " + grupo + ".\n";
+        
+        return cadenaADevolver + "\n";
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return 4;
+    }
+    
+    public void mostrarDatosExclusivos()
+    {
+        System.out.println("Grupo: " + grupo);
     }
     
 }

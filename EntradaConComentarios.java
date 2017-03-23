@@ -28,14 +28,28 @@ public class EntradaConComentarios extends Entrada
         comentarios.add(texto);
     }
     
-    public ArrayList<String> getCometarios()
+    public ArrayList<String> getComentarios()
     {
         return comentarios;
     }
     
     public String toString()
     {
-        return null;
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.toString();
+        
+        if (getComentarios().isEmpty()) {
+            cadenaADevolver += "La entrada no tiene comentarios.\n";
+        }
+        else {
+            cadenaADevolver += "Comentarios:\n";
+            for (String comentario : getComentarios()) {
+                cadenaADevolver += comentario + "\n";
+            }
+        }
+        
+        return cadenaADevolver;
     }
     
 }

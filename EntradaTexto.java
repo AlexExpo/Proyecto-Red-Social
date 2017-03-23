@@ -32,38 +32,31 @@ public class EntradaTexto extends EntradaConComentarios
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += "Usuario: " + getUsuario() + "\n";
+        cadenaADevolver += super.toString();
         cadenaADevolver += mensaje + "\n";
-        cadenaADevolver += getCantidadMeGusta() + " me gusta";
         
-        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
-        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
-        
-        cadenaADevolver += "Hace ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
-        }
-        
-        cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundos.\n";
-        
-        if (getCometarios().isEmpty()) {
-            cadenaADevolver += "La entrada no tiene comentarios.";
-        }
-        else {
-            cadenaADevolver += "Comentarios:\n";
-            for (String comentario : getCometarios()) {
-                cadenaADevolver += comentario + "\n";
-            }
-        }
-        
-        return cadenaADevolver;
+        return cadenaADevolver + "\n";
     }
     
     public void mostrarAutorYMensaje()
     {
         System.out.println("Usuario: " + getUsuario() + "." + "\n");
         System.out.println("Mensaje: " + mensaje + "." + "\n");
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return 5;
+    }
+    
+    public void mostrarDatosExclusivos()
+    {
+        System.out.println("Mensaje: " + mensaje);
     }
     
 }

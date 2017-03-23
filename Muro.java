@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.*;
 /**
  * Write a description of class Muro here.
  * 
@@ -8,9 +9,8 @@ import java.util.ArrayList;
 public class Muro
 {
     // instance variables - replace the example below with your own
-    private ArrayList<EntradaTexto> mensajes;
     
-    private ArrayList<EntradaFoto> fotos;
+    private ArrayList<Entrada> entradasDelMuro;
 
     /**
      * Constructor for objects of class Muro
@@ -18,30 +18,20 @@ public class Muro
     public Muro()
     {
         // initialise instance variables
-        mensajes = new ArrayList<EntradaTexto>();
-        fotos = new ArrayList<EntradaFoto>();
+        entradasDelMuro = new ArrayList<>();
     }
     
-    public void addEntradaTexto(EntradaTexto entradaTexto)
+    public void addEntrada(Entrada entrada)
     {
-        mensajes.add(entradaTexto);
+        entradasDelMuro.add(entrada);
     }
     
-    public void addEntradaFoto(EntradaFoto entradaFoto)
-    {
-        fotos.add(entradaFoto);
-    }
-    
-    public String toStrigg()
+    public String toString()
     {
         String cadenaADevolver = "";
         
-        for (EntradaTexto entrada : mensajes) {
-            cadenaADevolver += entrada + "\n";
-        }
-        
-        for (EntradaFoto entrada : fotos) {
-            cadenaADevolver += entrada + "\n";
+        for (Entrada entradaActual : entradasDelMuro) {
+            cadenaADevolver += entradaActual + "\n";
         }
         
         return cadenaADevolver;
@@ -50,6 +40,77 @@ public class Muro
     public void mostrar()
     {
         System.out.println(this);
+    }
+    
+    public void verCantidadDatosPorEntrada()
+    {
+        if (entradasDelMuro.size() != 0) {
+            for (Entrada entradaActual : entradasDelMuro) {
+                System.out.println(entradaActual.getCantidadDeDatosAsociadosALaEntrada());
+            }
+        }
+    }
+    
+    public void mostrarDatosExclusivosEntradasFiltradas(String tipoEntradaAFiltrar, String autorAFiltrar)
+    {
+        if (tipoEntradaAFiltrar == null && autorAFiltrar != null) {
+            for (Entrada entradaActual : entradasDelMuro) {
+                String textoDeEntrada = (String) entradaActual.toString();
+                if (textoDeEntrada.contains(autorAFiltrar)) {
+                    if (entradaActual instanceof EntradaTexto) {
+                        EntradaTexto entradaTexto = (EntradaTexto) entradaActual;
+                        entradaTexto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaFoto) {
+                        EntradaFoto entradaFoto = (EntradaFoto) entradaActual;
+                        entradaFoto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaUnionAGrupo) {
+                        EntradaUnionAGrupo entradaUnionAGrupo = (EntradaUnionAGrupo) entradaActual;
+                        entradaUnionAGrupo.mostrarDatosExclusivos();
+                    }
+                }
+            }
+        }
+        
+        if (tipoEntradaAFiltrar != null && autorAFiltrar == null) {
+            for (Entrada entradaActual : entradasDelMuro) {
+                if (entradaActual.getClass().getSimpleName().equals(tipoEntradaAFiltrar)) {
+                    if (entradaActual instanceof EntradaTexto) {
+                        EntradaTexto entradaTexto = (EntradaTexto) entradaActual;
+                        entradaTexto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaFoto) {
+                        EntradaFoto entradaFoto = (EntradaFoto) entradaActual;
+                        entradaFoto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaUnionAGrupo) {
+                        EntradaUnionAGrupo entradaUnionAGrupo = (EntradaUnionAGrupo) entradaActual;
+                        entradaUnionAGrupo.mostrarDatosExclusivos();
+                    }
+                }
+            }
+        }
+        
+        if (tipoEntradaAFiltrar != null && autorAFiltrar != null) {
+            for (Entrada entradaActual : entradasDelMuro) {
+                String textoDeEntrada = (String) entradaActual.toString();
+                if (textoDeEntrada.contains(autorAFiltrar) && entradaActual.getClass().getSimpleName().equals(tipoEntradaAFiltrar)) {
+                    if (entradaActual instanceof EntradaTexto) {
+                        EntradaTexto entradaTexto = (EntradaTexto) entradaActual;
+                        entradaTexto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaFoto) {
+                        EntradaFoto entradaFoto = (EntradaFoto) entradaActual;
+                        entradaFoto.mostrarDatosExclusivos();
+                    }
+                    if (entradaActual instanceof EntradaUnionAGrupo) {
+                        EntradaUnionAGrupo entradaUnionAGrupo = (EntradaUnionAGrupo) entradaActual;
+                        entradaUnionAGrupo.mostrarDatosExclusivos();
+                    }
+                }
+            }
+        }
     }
     
 }
