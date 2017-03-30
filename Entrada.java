@@ -78,6 +78,27 @@ public class Entrada
         return 3;
     }
     
+    public String mostrarEnHtml()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += "<br>" + "Usuario: " + getUsuario() + "\n" + "<br>";
+        cadenaADevolver += "<br>" + getCantidadMeGusta() + " me gusta:\n" + "<br>";
+        
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        
+        cadenaADevolver += "<br>" + "Hace ";
+        if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
+        }
+        
+        cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundos.\n" + "<br>";
+        
+        return cadenaADevolver + "\n" + "<br>";
+    }
+    
 }
 
 

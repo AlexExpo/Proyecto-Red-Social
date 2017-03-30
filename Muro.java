@@ -1,5 +1,13 @@
 import java.util.ArrayList;
-import java.lang.*;
+import java.io.File;
+import java.nio.file.Files;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
 /**
  * Write a description of class Muro here.
  * 
@@ -111,6 +119,50 @@ public class Muro
                 }
             }
         }
+    }
+    
+    public void mostrarMuroEnNavegador()
+    {
+        Path rutaArchivo = Paths.get("Archivo.html");
+        // Abrimos el archivo, escribimos en él y lo cerramos. Si se produce una
+        try {
+            File archivoPlantilla = new File("PlantillaRedSolcial.htm");
+            FileReader archivoPlantillaLeido = new FileReader (archivoPlantilla);
+            BufferedReader archivoPlantillaGuardado = new BufferedReader(archivoPlantillaLeido);
+            BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
+            String textoHtml = "";
+            while((textoHtml = archivoPlantillaGuardado.readLine()) != null){
+               archivo.write(textoHtml);
+            }
+            archivo.write(mostrarEnHtml());
+            archivo.write("</body> </html>");
+            archivo.close();
+        }
+        catch (IOException excepcion) {
+            // Mostramos por pantalla la excepción que se ha producido
+            System.out.println(excepcion.toString());
+        }
+        try 
+        {
+            String cmd = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome " + "Archivo.html" ;
+            Runtime.getRuntime().exec(cmd); 
+        } 
+        catch (IOException ioe) 
+        {
+            System.out.println (ioe);
+        }
+    }
+    
+    public String mostrarEnHtml()
+    {
+        String cadenaADevolver = "";
+        
+        for (Entrada entradaActual : entradasDelMuro) {
+            cadenaADevolver += "<p>" + entradaActual.mostrarEnHtml() + "</p>" + "\n";
+            cadenaADevolver += "<hr align=left noshade=noshade size=4 width=100% />";
+        }
+        
+        return cadenaADevolver;
     }
     
 }

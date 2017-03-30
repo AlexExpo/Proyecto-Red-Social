@@ -47,6 +47,16 @@ public class EntradaUnionAGrupo extends Entrada
         System.out.println("Grupo: " + grupo);
     }
     
+    public String mostrarEnHtml()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.mostrarEnHtml();
+        cadenaADevolver += "Se ha unido al grupo " + grupo + ".\n" + "<br>";
+        
+        return cadenaADevolver + "\n" + "<br>";
+    }
+    
 }
 
 

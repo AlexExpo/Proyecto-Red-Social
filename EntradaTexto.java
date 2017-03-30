@@ -59,6 +59,16 @@ public class EntradaTexto extends EntradaConComentarios
         System.out.println("Mensaje: " + mensaje);
     }
     
+    public String mostrarEnHtml()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.mostrarEnHtml();
+        cadenaADevolver += mensaje + "\n" + "<br>";
+        
+        return cadenaADevolver + "\n" + "<br>";
+    }
+    
 }
 
 

@@ -63,6 +63,17 @@ public class EntradaFoto extends EntradaConComentarios
         System.out.println("Url de la imagen: " + urlImagen);
     }
     
+    public String mostrarEnHtml()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.mostrarEnHtml();
+        cadenaADevolver += titulo + "\n" + "<br>";
+        cadenaADevolver += "<img src=\"" + urlImagen + "\">" + "\n" + "<br>";
+        
+        return cadenaADevolver + "\n" + "<br>";
+    }
+    
 }
 
 
