@@ -7,19 +7,21 @@ import java.time.temporal.ChronoUnit;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EntradaConComentarios extends Entrada
+public abstract class EntradaConComentarios extends Entrada
 {
     // instance variables - replace the example below with your own
     
     private ArrayList<String> comentarios;
 
-    /**
-     * Constructor for objects of class Entrada
-     */
     public EntradaConComentarios(String autor)
     {
-        // initialise instance variables
         super(autor);
+        comentarios = new ArrayList<String>();
+    }
+    
+    public EntradaConComentarios(String autor, int cantidadMeGusta, LocalDateTime momentoPublicacion)
+    {
+        super(autor, cantidadMeGusta, momentoPublicacion);
         comentarios = new ArrayList<String>();
     }
     

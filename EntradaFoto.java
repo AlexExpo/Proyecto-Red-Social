@@ -15,13 +15,16 @@ public class EntradaFoto extends EntradaConComentarios
     
     private String titulo;
 
-    /**
-     * Constructor for objects of class EntradaMuro
-     */
     public EntradaFoto(String autor, String url, String titulo)
     {
-        // initialise instance variables
         super(autor);
+        urlImagen = url;
+        this.titulo = titulo;
+    }
+    
+    public EntradaFoto(String autor, int cantidadMeGusta, LocalDateTime momentoPublicacion, String url, String titulo)
+    {
+        super(autor, cantidadMeGusta, momentoPublicacion);
         urlImagen = url;
         this.titulo = titulo;
     }

@@ -13,13 +13,15 @@ public class EntradaTexto extends EntradaConComentarios
     
     private String mensaje;
 
-    /**
-     * Constructor for objects of class EntradaTexto
-     */
     public EntradaTexto(String autor, String texto)
     {
-        // initialise instance variables
         super(autor);
+        mensaje = texto;
+    }
+    
+    public EntradaTexto(String autor, int cantidadMeGusta, LocalDateTime momentoPublicacion, String texto)
+    {
+        super(autor, cantidadMeGusta, momentoPublicacion);
         mensaje = texto;
     }
     

@@ -12,13 +12,15 @@ public class EntradaUnionAGrupo extends Entrada
     // instance variables - replace the example below with your own
     private String grupo;
 
-    /**
-     * Constructor for objects of class EntradaUnionAGrupo
-     */
     public EntradaUnionAGrupo(String autor, String nombreGrupo)
     {
-        // initialise instance variables
         super(autor);
+        grupo = nombreGrupo;
+    }
+    
+    public EntradaUnionAGrupo(String autor, int cantidadMeGusta, LocalDateTime momentoPublicacion, String nombreGrupo)
+    {
+        super(autor, cantidadMeGusta, momentoPublicacion);
         grupo = nombreGrupo;
     }
     

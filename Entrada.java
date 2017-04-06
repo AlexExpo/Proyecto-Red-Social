@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Entrada
+public abstract class Entrada
 {
     // instance variables - replace the example below with your own
     private String usuario;
@@ -16,15 +16,20 @@ public class Entrada
     
     private LocalDateTime momentoPublicacion;
 
-    /**
-     * Constructor for objects of class Entrada
-     */
     public Entrada(String autor)
     {
         // initialise instance variables
         usuario = autor;
         cantidadMeGusta = 0;
         momentoPublicacion = LocalDateTime.now();
+    }
+    
+    public Entrada(String autor, int cantidadMeGusta, LocalDateTime momentoPublicacion)
+    {
+        // initialise instance variables
+        usuario = autor;
+        this.cantidadMeGusta = cantidadMeGusta;
+        this.momentoPublicacion = momentoPublicacion;
     }
     
     public void meGusta()
@@ -47,10 +52,7 @@ public class Entrada
         return cantidadMeGusta;
     }
     
-    public void mostrar()
-    {
-        
-    }
+    abstract void mostrar();
     
     public String toString()
     {
@@ -60,15 +62,26 @@ public class Entrada
         cadenaADevolver += getCantidadMeGusta() + " me gusta:\n";
         
         long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
         long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long minutosResiduales = minutosQueHanPasadoDesdeCreacion % 60;
+        long horasQueHanPasadoDesdeCreacion = minutosQueHanPasadoDesdeCreacion / 60;
+        long horasResiduales = horasQueHanPasadoDesdeCreacion % 60;
+        long diasQueHanPasadoDesdeCreacion = horasQueHanPasadoDesdeCreacion / 24;
         
         cadenaADevolver += "Hace ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
+        if (diasQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += diasQueHanPasadoDesdeCreacion + " dia(s) ";
         }
-        
-        cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundos.\n";
+        else if (horasQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += horasQueHanPasadoDesdeCreacion + " hora(s) ";
+        }
+        else if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minuto(s) ";
+        }
+        else if (segundosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundo(s).\n";
+        }
         
         return cadenaADevolver + "\n";
     }
@@ -86,15 +99,28 @@ public class Entrada
         cadenaADevolver += "<br>" + getCantidadMeGusta() + " me gusta:\n" + "<br>";
         
         long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
         long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long minutosResiduales = minutosQueHanPasadoDesdeCreacion % 60;
+        long horasQueHanPasadoDesdeCreacion = minutosQueHanPasadoDesdeCreacion / 60;
+        long horasResiduales = horasQueHanPasadoDesdeCreacion % 60;
+        long diasQueHanPasadoDesdeCreacion = horasQueHanPasadoDesdeCreacion / 24;
         
         cadenaADevolver += "<br>" + "Hace ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
+        if (diasQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += diasQueHanPasadoDesdeCreacion + " dia(s) ";
+        }
+        else if (horasQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += horasQueHanPasadoDesdeCreacion + " hora(s) ";
+        }
+        else if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minuto(s) ";
+        }
+        else if (segundosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundo(s).\n";
         }
         
-        cadenaADevolver += segundosQueHanPasadoDesdeCreacion + " segundos.\n" + "<br>";
+        cadenaADevolver += "<br>";
         
         return cadenaADevolver + "\n" + "<br>";
     }

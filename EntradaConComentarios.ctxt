@@ -1,13 +1,14 @@
 #BlueJ class context
 comment0.params=autor
 comment0.target=EntradaConComentarios(java.lang.String)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Entrada\r\n
-comment1.params=texto
-comment1.target=void\ addComentario(java.lang.String)
-comment2.params=
-comment2.target=java.util.ArrayList\ getComentarios()
+comment1.params=autor\ cantidadMeGusta\ momentoPublicacion
+comment1.target=EntradaConComentarios(java.lang.String,\ int,\ java.time.LocalDateTime)
+comment2.params=texto
+comment2.target=void\ addComentario(java.lang.String)
 comment3.params=
-comment3.target=java.lang.String\ toString()
+comment3.target=java.util.ArrayList\ getComentarios()
 comment4.params=
-comment4.target=java.lang.String\ mostrarEnHtml()
-numComments=5
+comment4.target=java.lang.String\ toString()
+comment5.params=
+comment5.target=java.lang.String\ mostrarEnHtml()
+numComments=6
