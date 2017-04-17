@@ -157,6 +157,7 @@ public class Muro
     
     public void mostrarMuroEnNavegador(String nombreUsuario)
     {
+        entradasDelMuro.clear();
         Path rutaArchivo = Paths.get("Archivo.html");
         try {
             URL enlace = new URL("https://script.google.com/macros/s/AKfycbzHc3p1twTfyF7o0_cxSwnxSsyOemuHnSu406ly9DZIf5Ck2BA/exec?user=" + nombreUsuario);
@@ -202,30 +203,11 @@ public class Muro
                     entradasDelMuro.add(entradaUnionAGrupo);
                 }
             }
-            File archivoPlantilla = new File("PlantillaRedSolcial.htm");
-            FileReader archivoPlantillaLeido = new FileReader (archivoPlantilla);
-            BufferedReader archivoPlantillaGuardado = new BufferedReader(archivoPlantillaLeido);
-            BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
-            String textoHtml = "";
-            while((textoHtml = archivoPlantillaGuardado.readLine()) != null){
-               archivo.write(textoHtml);
-            }
-            archivo.write(mostrarEnHtml());
-            archivo.write("</body> </html>");
-            archivo.close();
+            mostrarMuroEnNavegador();
         }
         catch (IOException excepcion) {
             // Mostramos por pantalla la excepción que se ha producido
             System.out.println(excepcion.toString());
-        }
-        try 
-        {
-            String cmd = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome " + "Archivo.html";
-            Runtime.getRuntime().exec(cmd); 
-        } 
-        catch (IOException ioe) 
-        {
-            System.out.println (ioe);
         }
     }
     
@@ -243,9 +225,7 @@ public class Muro
     
     public String convertirAFechaCorrecta(String fecha)
     {
-        Scanner fechaEscaneada = new Scanner(fecha);
-        String fechaSinCorregir = fechaEscaneada.nextLine();
-        String[] elementosFecha = fechaSinCorregir.split("-");
+        String[] elementosFecha = fecha.split("-");
         String[] elementosPrimeraParte = elementosFecha[0].split("/");
         String[] elementosSegundaParte = elementosFecha[1].split(":");
         String caracterPrimeraParte1 = "";
